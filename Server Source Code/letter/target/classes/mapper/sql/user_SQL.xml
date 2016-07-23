@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sample">
+	
+	<select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			   user
+		]]>
+	</select>
+	<select id="selectAccessList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			   access_tb
+		]]>
+	</select>
+	<select id="selectLetterList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			   letter_tb
+		]]>
+	</select>
+	<select id="selectFindLetter" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    *
+			FROM
+			   letter_tb
+			WHERE
+				from_id=#{from_id}
+		]]>
+	</select>
+	<select id="selectLetterPK" resultType="Integer">
+		<![CDATA[
+			SELECT
+			    max(letter_id)+1
+			FROM
+			   letter_tb
+		]]>
+	</select>
+	<select id="selectFindRegister" parameterType="String" resultType="String">
+		<![CDATA[
+			SELECT
+			    register_id
+			FROM
+			   user
+			WHERE
+				id=#{to_id}
+		]]>
+	</select>
+	
+	<insert id="insertMember" parameterType="hashmap">
+		<![CDATA[
+			INSERT IGNORE 
+				INTO user(
+			    	id,
+			    	name,
+			    	register_id,
+			    	signup_date
+			    	)
+				VALUES(
+					#{id},
+			    	#{name},
+			    	#{register_id},
+			    	#{date}
+			    )
+		]]>
+	</insert>	
+	
+	<insert id="accessMember" parameterType="hashmap">
+		<![CDATA[
+			INSERT 
+				INTO access_tb(
+			    	access_id,
+			    	access_name,
+			    	access_date
+			    	)
+				VALUES(
+					#{id},
+			    	#{name},
+			    	#{date}
+			    )
+		]]>
+	</insert>
+	
+	<insert id="insertLetter" parameterType="hashmap">
+		<![CDATA[
+			INSERT
+				INTO letter_tb(
+			    	to_id,
+			    	to_name,
+			    	from_id,
+			    	from_name,
+			    	address,
+			    	latitude,
+			    	longitude,
+			    	content,
+			    	read_state,
+			    	date
+			    	)
+				VALUES(
+			    	#{to_id},
+			    	#{to_name},
+			    	#{from_id},
+			    	#{from_name},
+			    	#{address},
+			    	#{latitude},
+			    	#{longitude},
+			    	#{content},
+			    	#{read_state},
+			    	#{date}
+			    )
+		]]>
+	</insert>	
+	
+	<update id="updateLetterState" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				letter_tb
+			SET
+				read_state=1
+			WHERE
+				letter_id=#{letter_id}
+		]]>
+	</update>	
+	
+	<update id="closeUser" parameterType="hashmap">
+		<![CDATA[
+			UPDATE
+				access_tb
+			SET
+				close_date=#{close_date}
+			WHERE
+				access_id=#{access_id} AND
+				access_name=#{access_name} AND
+				access_date=#{access_date} 
+		]]>
+	</update>
+	<delete id="deleteMember" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				user
+			WHERE
+				id=#{id}
+		]]>
+	</delete>	
+	
+	<delete id="deleteLetter" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				letter_tb
+			WHERE
+				letter_id=#{letter_id}
+		]]>
+	</delete>
+	
+	<delete id="deleteAccess" parameterType="hashmap">
+		<![CDATA[
+			DELETE FROM
+				access_tb
+			WHERE
+				number=#{number}
+		]]>
+	</delete>	
+	
+	
+	
+	
+	
+	
+</mapper>
