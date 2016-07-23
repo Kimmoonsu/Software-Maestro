@@ -40,5 +40,7 @@ Server : Spring Framework, JSP, Mybatis, MySQL, AWS
 
 3. 관리자가 데이터를 편리하게 관리할 수 있는 CMS(관리시스템) 구축
 
+앱 시연 영상
 
+https://drive.google.com/folderview?id=0B6utaWHBJCMkcy1VVzJ5Z1cyeG8&usp=sharing
 
