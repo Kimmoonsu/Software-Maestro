@@ -10,7 +10,7 @@ Secretter는 특정 위치에서 편지를 남기게 되면,
 편지가 있는 위치에서 편지를 읽을 수 있는
 위치 기반의 편지 Application 입니다.
 
-Client : Android Studio
+Client : Android Studio, SQLite
 
 Server : Spring Framework, JSP, Mybatis, MySQL, AWS, Apache Tomcat8.0
 
