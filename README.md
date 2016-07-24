@@ -12,7 +12,7 @@ Secretter는 특정 위치에서 편지를 남기게 되면,
 
 Client : Android Studio
 
-Server : Spring Framework, JSP, Mybatis, MySQL, AWS
+Server : Spring Framework, JSP, Mybatis, MySQL, AWS, Apache Tomcat8.0
 
 기능.
 
